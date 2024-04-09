@@ -1,8 +1,12 @@
 package com.donhat.themovieapp.models;
 
+import android.widget.ImageView;
+
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
+import androidx.databinding.BindingAdapter;
 
+import com.bumptech.glide.Glide;
 import com.donhat.themovieapp.BR;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -19,6 +23,15 @@ public class Movie extends BaseObservable {
     @SerializedName("poster_path")
     @Expose
     private String posterPath;
+
+    @BindingAdapter({"posterPath"})
+    public static void loadImage(ImageView imageView, String imageUrl) {
+        String imagePath = "https://image.tmdb.com/t/p/w500/" + imageUrl;
+
+        Glide.with(imageView.getContext())
+                .load(imagePath)
+                .into(imageView);
+    }
 
     @SerializedName("release_date")
     @Expose

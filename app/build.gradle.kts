@@ -43,8 +43,10 @@ dependencies {
     implementation(libs.constraintlayout)
     implementation(libs.retrofit)
     implementation(libs.swiperefreshlayout)
+    implementation(libs.glide)
+    implementation(libs.converter.gson)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
-    implementation(libs.converter.gson)
     androidTestImplementation(libs.espresso.core)
+    annotationProcessor(libs.compiler)
 }

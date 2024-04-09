@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
 
     <data>
 
@@ -32,7 +33,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
                     android:contentDescription="Movie image"
-                    android:scaleType="fitXY" />
+                    android:scaleType="fitXY"
+                    bind:posterPath="@{movie.posterPath}" />
 
                 <TextView
                     android:id="@+id/title_text_view"
