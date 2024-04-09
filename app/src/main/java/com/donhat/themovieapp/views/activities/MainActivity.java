@@ -10,6 +10,8 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
@@ -50,6 +52,10 @@ public class MainActivity extends AppCompatActivity {
                 .get(MainActivityViewModel.class);
 
         getPopularMovies();
+
+        _swipeRefreshLayout = _activityMainBinding.main;
+        _swipeRefreshLayout.setColorSchemeResources(R.color.black);
+        _swipeRefreshLayout.setOnRefreshListener(this::getPopularMovies);
     }
 
     private void getPopularMovies() {
@@ -60,5 +66,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void displayMoviesInRecyclerView() {
+        _moviesRecyclerView = _activityMainBinding.moviesRecyclerView;
+
+        _movieAdapter = new MovieAdapter(_movies);
+
+        _moviesRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        _moviesRecyclerView.setAdapter(_movieAdapter);
+        _moviesRecyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+
+        _movieAdapter.notifyDataSetChanged();
     }
 }

@@ -26,7 +26,7 @@ public class Movie extends BaseObservable {
 
     @BindingAdapter({"posterPath"})
     public static void loadImage(ImageView imageView, String imageUrl) {
-        String imagePath = "https://image.tmdb.com/t/p/w500/" + imageUrl;
+        String imagePath = "https://image.tmdb.org/t/p/w500" + imageUrl;
 
         Glide.with(imageView.getContext())
                 .load(imagePath)
